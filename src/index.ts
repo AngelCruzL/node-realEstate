@@ -6,9 +6,13 @@ import { databaseConfig } from '@config/database';
 
 const app = express();
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 async function initDatabase() {
   try {
     await databaseConfig.authenticate();
+    await databaseConfig.sync();
     console.log('Connection has been established successfully.');
   } catch (error) {
     console.error('Unable to connect to the database:', error);
