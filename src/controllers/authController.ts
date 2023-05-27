@@ -5,5 +5,7 @@ export function renderLogin(req: Request, res: Response) {
 }
 
 export function renderRegister(req: Request, res: Response) {
-  res.render('auth/register');
+  res.render('auth/register', {
+    pageTitle: 'Crear Cuenta',
+  });
 }
