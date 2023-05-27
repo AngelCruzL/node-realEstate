@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
 import { check, validationResult } from 'express-validator';
-import { User } from '../models/User';
+
+import { User } from '@models/User';
+import { generateToken } from '@helpers/generateToken';
 
 export function renderLoginPage(req: Request, res: Response) {
   res.render('auth/login', {
@@ -61,10 +63,13 @@ export async function registerUser(req: Request, res: Response) {
     name,
     email,
     password,
-    token: '123456',
+    token: generateToken(),
   });
 
-  res.status(201).json(user);
+  res.render('templates/message', {
+    pageTitle: 'Confirma tu Cuenta',
+    message: `Hola ${user.name}, te hemos enviado un correo electrónico para que confirmes tu cuenta`,
+  });
 }
 
 export function renderForgotPasswordPage(req: Request, res: Response) {
