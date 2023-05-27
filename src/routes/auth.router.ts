@@ -1,9 +1,14 @@
 import { Router } from 'express';
-import { renderLogin, renderRegister } from '@controllers/authController';
+import {
+  renderForgotPasswordPage,
+  renderLoginPage,
+  renderRegisterPage,
+} from '@controllers/authController';
 
 const authRouter = Router();
 
-authRouter.get('/login', renderLogin);
-authRouter.get('/register', renderRegister);
+authRouter.get('/login', renderLoginPage);
+authRouter.get('/register', renderRegisterPage);
+authRouter.get('/forgot-password', renderForgotPasswordPage);
 
 export default authRouter;
