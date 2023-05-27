@@ -57,8 +57,14 @@ export async function registerUser(req: Request, res: Response) {
     });
   }
 
-  const user = await User.create(req.body);
-  res.json(user);
+  const user = await User.create({
+    name,
+    email,
+    password,
+    token: '123456',
+  });
+
+  res.status(201).json(user);
 }
 
 export function renderForgotPasswordPage(req: Request, res: Response) {
