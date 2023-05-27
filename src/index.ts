@@ -2,8 +2,20 @@ import express from 'express';
 import * as path from 'path';
 
 import authRouter from '@routes/auth.router';
+import { databaseConfig } from '@config/database';
 
 const app = express();
+
+async function initDatabase() {
+  try {
+    await databaseConfig.authenticate();
+    console.log('Connection has been established successfully.');
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  }
+}
+
+initDatabase();
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
