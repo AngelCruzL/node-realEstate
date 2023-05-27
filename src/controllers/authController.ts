@@ -1,7 +1,9 @@
 import { Request, Response } from 'express';
 
 export function renderLogin(req: Request, res: Response) {
-  res.render('auth/login');
+  res.render('auth/login', {
+    pageTitle: 'Iniciar Sesión',
+  });
 }
 
 export function renderRegister(req: Request, res: Response) {

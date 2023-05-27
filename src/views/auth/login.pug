@@ -1,1 +1,20 @@
-h1 Login
+extends ../layout/index
+
+block content
+    .py-10
+        h1.my-10.font-extrabold.text-4xl.text-center Bienes
+            span.font-normal Raíces
+        h2.text-center.text-2xl.font-extrabold= pageTitle
+
+        .mt-8.mx-auto.max-w-md
+            .py-8.px-4.bg-white.shadow
+                form.space-y-5
+                    div
+                        label.block.mb-3.text-gray-500.font-bold.text-sm.uppercase(for="email") Correo Electrónico
+                        input#email.py-2.px-3.w-full.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="test@email.com" type="email" name="email")
+
+                    div
+                        label.block.mb-3.text-gray-500.font-bold.text-sm.uppercase(for="password") Contraseña
+                        input#password.py-2.px-3.w-full.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Password" type="password" name="password")
+
+                    input(class="cursor-pointer py-3 w-full bg-indigo-600 text-white font-bold hover:bg-indigo-700" type="submit" value="Iniciar Sesión")
